@@ -1,4 +1,4 @@
-# React File Viewer (Crafted by TF)
+# React File Viewer — Crafted by TF
 View this library on npm - [@craftedbytf/react-file-viewer](https://www.npmjs.com/package/@craftedbytf/react-file-viewer)
 
 ## Introduction
