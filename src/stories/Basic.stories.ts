@@ -6,11 +6,22 @@ const meta = {
   title: "Example/Basic File Viewer",
   component: FileViewer,
   tags: ["autodocs"],
-  argTypes: {
-    // TODO: configure argument types
+  parameters: {
+    layout: "fullscreen",
   },
-  args: {
-    // TODO: configure default args
+  argTypes: {
+    file: {
+      control: "text",
+      description: "The file to be viewed, can be a URL or a Blob.",
+      type: { name: "string", required: true },
+    },
+    fileType: {
+      control: "select",
+      options: ["pdf"],
+      description: "The type of the file to be viewed. If not provided, it will be inferred from the file.",
+      type: { name: "string", required: false },
+    },
+    // TODO: add custom components and renderers prop
   },
 } satisfies Meta<typeof FileViewer>;
 
@@ -20,13 +31,7 @@ type Story = StoryObj<typeof meta>;
 export const PDFExternalUrl: Story = {
   name: "PDF (External URL)",
   args: {
-    // TODO: configure args for PDF file type
-  },
-};
-
-export const PDFBlob: Story = {
-  name: "PDF (Blob)",
-  args: {
-    // TODO: configure args for PDF file type
+    file: "/sample.pdf",
+    fileType: "pdf",
   },
 };

@@ -1,5 +1,12 @@
 import type { Preview } from '@storybook/react-vite'
 
+// load default theme
+import "../src/default.css";
+
+// load story styles
+import "./storybook.css";
+
+
 const preview: Preview = {
   parameters: {
     controls: {

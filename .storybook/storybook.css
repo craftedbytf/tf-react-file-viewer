@@ -1,0 +1,6 @@
+.sb-main-fullscreen {
+    height: 100vh;
+}
+.sb-main-fullscreen #storybook-root {
+    height: 100%;
+}
