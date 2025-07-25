@@ -17,6 +17,7 @@ export interface FileViewerProps {
   fileType: string;
   loadingComponent?: FC;
   errorComponent?: FC<{ error: Error }>;
+  customRenderers?: Record<string, FileRenderer | LazyExoticComponent<FileRenderer>>;
 }
 
 export function FileViewer({
@@ -24,6 +25,7 @@ export function FileViewer({
   fileType,
   loadingComponent,
   errorComponent,
+  customRenderers,
 }: FileViewerProps) {
   const { loading, error, fileUrl } = useFileLoader(file);
 
@@ -45,7 +47,9 @@ export function FileViewer({
     return <div className="tf-file-viewer-error">File could not be loaded</div>;
   }
 
-  const Renderer = defaultRenderer[fileType] || UnsupportedViewer;
+  // Merge customRenderers with defaultRenderer, customRenderers take precedence
+  const rendererMap = { ...defaultRenderer, ...(customRenderers ?? {}) };
+  const Renderer = rendererMap[fileType] || UnsupportedViewer;
 
   return (
     <div className="tf-file-viewer">
